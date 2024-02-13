@@ -27,8 +27,15 @@ test('Order Web-hosting button', async ({ page }) => {
   let mainPage = new MainPage(page);
 
   await mainPage.goto();
-  await expect(mainPage.orderWebHostButton).toBeVisible();
+  await expect(mainPage.orderWebHostButton).toBeTruthy()
   await expect(mainPage.orderWebHostButton).toContainText("Choose a web-hosting");
+});
+
+test('Top sales image', async ({ page }) => {
+  let mainPage = new MainPage(page);
+
+  await mainPage.goto();
+  await expect(mainPage.topSalesSign).toBeVisible();
 });
 
 

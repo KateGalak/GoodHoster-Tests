@@ -6,7 +6,8 @@ export class MainPage {
   readonly header: Locator;
   readonly footer: Locator;
   readonly menuButtom: Locator;
-  readonly orderWebHostButton: Locator;
+  readonly orderWebHostButton: any;
+  readonly topSalesSign: Locator;
   
   constructor(page: Page) {
     this.page = page;
@@ -15,6 +16,7 @@ export class MainPage {
     this.footer = page.locator("xpath=//div[@id='footer-low']");
     this.menuButtom = page.locator("xpath=//div[@id='menu-bottom']");
     this.orderWebHostButton = page.locator("xpath=//a[@class='button large']")
+    this.topSalesSign = page.locator("//li[contains(@class, 'best')]/span[text()='Top sales']")
 
   }
 
