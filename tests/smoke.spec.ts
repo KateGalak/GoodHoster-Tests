@@ -12,14 +12,14 @@ test('Check top-bar ', async ({ page }) => {
   let mainPage = new MainPage(page);
 
   await mainPage.goto();
-  await expect(mainPage.topBar).toBeVisible();
+  await expect(mainPage.TopBar).toBeVisible();
 });
 
 test('Footer elements', async ({ page }) => {
   let mainPage = new MainPage(page);
 
   await mainPage.goto();
-  await expect(mainPage.footer).toBeVisible();
+  await expect(mainPage.foter).toBeVisible();
   await expect(mainPage.menuButtom).toBeVisible();
 });
 
