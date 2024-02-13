@@ -1,12 +1,16 @@
 import { expect, type Locator, type Page } from '@playwright/test';
 
-export class MainPage {
+export class LandingPage {
   readonly page: Page;
   readonly topBar: Locator;
   readonly header: Locator;
   readonly footer: Locator;
   readonly menuButtom: Locator;
-  readonly orderWebHostButton: Locator;
+  readonly chooseWebHostButton: Locator;
+  readonly currencyButtonUAH: Locator;
+  readonly currencyButtonUSD: Locator;
+  readonly pricePackageCpStartUAH: Locator;
+  readonly pricePackageCpStartUSD: Locator;
   
   constructor(page: Page) {
     this.page = page;
@@ -14,11 +18,14 @@ export class MainPage {
     this.header = page.locator("xpath=//div[@class='nav-line container hide-for-small-only clearfix']");
     this.footer = page.locator("xpath=//div[@id='footer-low']");
     this.menuButtom = page.locator("xpath=//div[@id='menu-bottom']");
-    this.orderWebHostButton = page.locator("xpath=//a[@class='button large']")
-
+    this.chooseWebHostButton = page.locator("xpath=//a[@class='button large']")
+    this.currencyButtonUAH = page.locator("xpath=//a[@data-code='UAH']")
+    this.currencyButtonUSD = page.locator("xpath=//a[@data-code='USD']")
+    this.pricePackageCpStartUAH = page.locator("xpath=//span[contains(text(), '61.79')]");
+    this.pricePackageCpStartUSD = page.locator("xpath=//span[contains(text(), '1.67')]");
   }
 
   async goto() {
     await this.page.goto('https://goodhoster.net/en/');
-  }  
+  }
 }
