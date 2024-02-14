@@ -1,34 +1,46 @@
 import { test, expect } from '@playwright/test';
-import { MainPage } from '../page-object/main-page';
+import { MainPage } from '../page-object/landing-page';
 
-test('Check URL main page', async ({ page }) => {
-  let mainPage = new MainPage(page);
+test.describe("tests for lading", () => {
 
-  await mainPage.goto();
-  await expect(page.url()).toContain("https://goodhoster.net/");
-});
+  let globalPage: MainPage;
 
-test('Check top-bar ', async ({ page }) => {
-  let mainPage = new MainPage(page);
+  test.beforeEach(async ({page}) => {
+    globalPage = new MainPage(page);
+    await globalPage.goto();
 
-  await mainPage.goto();
-  await expect(mainPage.topBar).toBeVisible();
-});
+  })
 
-test('Footer elements', async ({ page }) => {
-  let mainPage = new MainPage(page);
+  test('Check URL main page', async ({ page }) => {
+    await expect(page.url()).toContain("https://goodhoster.net/");
 
-  await mainPage.goto();
-  await expect(mainPage.footer).toBeVisible();
-  await expect(mainPage.menuButtom).toBeVisible();
-});
+  });
+  
+  test('Check top-bar ', async ({ page }) => {
+    let mainPage = new MainPage(page);
+  
+    await expect(mainPage.topBar).toBeVisible();
 
-test('Order Web-hosting button', async ({ page }) => {
-  let mainPage = new MainPage(page);
+  });
+  
+  test('Footer elements', async ({ page }) => {
+    await expect(globalPage.footer).toBeVisible();
+    await expect(globalPage.menuButtom).toBeVisible();
 
-  await mainPage.goto();
-  await expect(mainPage.orderWebHostButton).toBeVisible();
-  await expect(mainPage.orderWebHostButton).toContainText("Choose a web-hosting");
-});
+  });
+  
+  test('Order Web-hosting button', async ({ page }) => {
+    await expect(globalPage.orderWebHostButton).toBeVisible();
+    await expect(globalPage.orderWebHostButton).toContainText("Choose a web-hosting");
+
+  });
+
+  test('Lang switcher to UA',async ({page}) => {
+    await globalPage.uaLangBtn.click();
+    await expect(globalPage.orderWebHostButton).toContainText("Замовити веб-хостинг")
+  })
+  
+})
+
 
 
