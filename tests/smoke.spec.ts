@@ -1,34 +1,24 @@
-import { test, expect } from '@playwright/test';
+// import { test, expect } from "@playwright/test"
+import { test } from '../fixtures/EremenkoFixture';
 import { MainPage } from '../page-object/main-page';
 
-test('Check URL main page', async ({ page }) => {
-  let mainPage = new MainPage(page);
-
-  await mainPage.goto();
-  await expect(page.url()).toContain("https://goodhoster.net/");
+test('Check URL main page', async ({ CheckURLFixture }) => {
+  await CheckURLFixture.CheckURL();
 });
 
-test('Check top-bar ', async ({ page }) => {
-  let mainPage = new MainPage(page);
-
-  await mainPage.goto();
-  await expect(mainPage.TopBar).toBeVisible();
+test('Check top-bar ', async ({ CheckTopBarElements }) => {
+  await CheckTopBarElements.CheckURL();
 });
 
-test('Footer elements', async ({ page }) => {
-  let mainPage = new MainPage(page);
-
-  await mainPage.goto();
-  await expect(mainPage.foter).toBeVisible();
-  await expect(mainPage.menuButtom).toBeVisible();
+test('Footer elements', async ({ CheckFooterElements }) => {
+  await CheckFooterElements.FooterElements();
 });
 
-test('Order Web-hosting button', async ({ page }) => {
-  let mainPage = new MainPage(page);
-
-  await mainPage.goto();
-  await expect(mainPage.orderWebHostButton).toBeVisible();
-  await expect(mainPage.orderWebHostButton).toContainText("Choose a web-hosting");
+test('Order Web-hosting button', async ({ CheckOrderBTN }) => {
+  await CheckOrderBTN.ContainText()
 });
 
 
+test("Test with fixture", async ({ CheckvisiableElementWithFixture }) => {
+  await CheckvisiableElementWithFixture.checkViseability();
+})
