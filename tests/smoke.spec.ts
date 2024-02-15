@@ -1,6 +1,4 @@
-// import { test, expect } from "@playwright/test"
 import { test } from '../fixtures/EremenkoFixture';
-import { MainPage } from '../page-object/main-page';
 
 test('Check URL main page', async ({ CheckURLFixture }) => {
   await CheckURLFixture.CheckURL();
@@ -17,7 +15,6 @@ test('Footer elements', async ({ CheckFooterElements }) => {
 test('Order Web-hosting button', async ({ CheckOrderBTN }) => {
   await CheckOrderBTN.ContainText()
 });
-
 
 test("Test with fixture", async ({ CheckvisiableElementWithFixture }) => {
   await CheckvisiableElementWithFixture.checkViseability();

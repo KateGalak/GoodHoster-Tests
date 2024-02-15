@@ -21,7 +21,6 @@ export class MainPage {
     this.FirstWebHostingCard = page.locator("xpath=//*[contains(text(),'CP-START')]");
     this.SecondWebHostingCard = page.locator("xpath=//*[contains(text(),'CP-4GB')]");
     this.ThirdWebHostingCard = page.locator("xpath=//*[contains(text(),'CP-PRO')]");
-
   }
 
   async goto() {
