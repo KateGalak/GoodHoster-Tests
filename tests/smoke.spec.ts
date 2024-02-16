@@ -23,12 +23,23 @@ test('Footer elements', async ({ page }) => {
   await expect(mainPage.menuButtom).toBeVisible();
 });
 
-test('Order Web-hosting button', async ({ page }) => {
+test('Choose a Web-hosting button', async ({ page }) => {
   let mainPage = new MainPage(page);
 
   await mainPage.goto();
-  await expect(mainPage.orderWebHostButton).toBeVisible();
-  await expect(mainPage.orderWebHostButton).toContainText("Choose a web-hosting");
+  await expect(page.url()).toBe("https://goodhoster.net/en/");
+  await expect(mainPage.chooseWebHostButton).toBeVisible();
+  await expect(mainPage.chooseWebHostButton).toContainText("Choose a web-hosting");
+});
+
+test('Check Web-hosting/VPS tabs', async ({ page }) => {
+  let mainPage = new MainPage(page);
+
+  await mainPage.goto();
+  await mainPage.VPSTab.click();
+  await expect(mainPage.VMPrice).toBeVisible();
+  await mainPage.WebHostingTab.click();
+  await expect(mainPage.CPPrice).toBeVisible();
 });
 
 
