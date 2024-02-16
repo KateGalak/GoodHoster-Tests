@@ -6,6 +6,8 @@ test('Check URL main page', async ({ page }) => {
 
   await mainPage.goto();
   await expect(page.url()).toContain("https://goodhoster.net/");
+  await expect(page).toHaveTitle('Хостинг в Україні | Професійний хостинг сайтів та vps хостинг у Європі ☎ +38 044 360-73-23 » Goodhoster');
+
 });
 
 test('Check top-bar ', async ({ page }) => {
@@ -27,8 +29,8 @@ test('Order Web-hosting button', async ({ page }) => {
   let mainPage = new MainPage(page);
 
   await mainPage.goto();
-  await expect(mainPage.orderWebHostButton).toBeVisible();
-  await expect(mainPage.orderWebHostButton).toContainText("Choose a web-hosting");
+  await expect(mainPage.orderButton).toBeVisible();
+  await expect(mainPage.orderButton).toContainText("Замовити веб-хостинг");
 });
 
 
