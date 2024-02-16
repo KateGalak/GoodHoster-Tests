@@ -6,7 +6,7 @@ export class MainPage {
   readonly header: Locator;
   readonly footer: Locator;
   readonly menuButtom: Locator;
-  readonly orderWebHostButton: Locator;
+  readonly orderButton: Locator;
   
   constructor(page: Page) {
     this.page = page;
@@ -14,11 +14,11 @@ export class MainPage {
     this.header = page.locator("xpath=//div[@class='nav-line container hide-for-small-only clearfix']");
     this.footer = page.locator("xpath=//div[@id='footer-low']");
     this.menuButtom = page.locator("xpath=//div[@id='menu-bottom']");
-    this.orderWebHostButton = page.locator("xpath=//a[@class='button large']")
+    this.orderButton = page.getByRole('link', { name: 'Замовити веб-хостинг' })         
 
   }
 
   async goto() {
-    await this.page.goto('https://goodhoster.net/en/');
+    await this.page.goto('https://goodhoster.net/uk/');
   }  
 }
